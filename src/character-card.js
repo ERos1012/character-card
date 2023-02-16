@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit";
+import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
 const characterImage = new URL("../assets/character.png", import.meta.url).href;
 
@@ -40,6 +41,11 @@ export class CharacterCard extends LitElement {
         font-size: 20px;
         margin: 16px 8px 8px;
         border: 3px solid #555;
+      }
+
+      .details summary {
+        font-size: 20px;
+        font-weight: bold;
       }
 
       @media only screen and (max-width: 500px) {
@@ -94,9 +100,11 @@ export class CharacterCard extends LitElement {
             <h4>${this.characterName}</h4>
           </div>
           <img class="image" src="${characterImage}" />
-          <div class="details">
+          <details class="details">
+            <slot></slot>
+            <!-- TODO use slot to make details more abstract -->
             <p>${this.characterBio}</p>
-          </div>
+          </details>
         </div>
       </div>
     `;

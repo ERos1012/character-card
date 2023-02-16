@@ -1,77 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="Description" content="Put your description here." />
+    <base href="/" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Put your description here.">
-  <base href="/">
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #ededed;
+      }
+    </style>
+    <title>character-card</title>
+  </head>
 
-  <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background-color: #ededed;
-    }
-  </style>
-  <title>character-card</title>
-</head>
+  <body>
+    <div class="buttons">
+      <button class="duplicate">Duplicate card</button>
+      <button class="modifytitle">Change Name</button>
+      <button id="deletelastcard">Delete Card</button>
+      <button data-toggle-btn>Show Bio</button>
+    </div>
 
-<body>
-  <div class="buttons">
-    <button class="duplicate">Duplicate card</button>
-    <button class="modifytitle">Change Name</button>
-    <button id="deletelastcard">Delete Card</button>
-    <button data-toggle-btn>Show Bio</button>
-  </div>
+    <div id="app">
+      <character-card>
+        <meme-maker
+          alt="Cat stalking a small toy"
+          image-url="https://cdn2.thecatapi.com/images/9j5.jpg"
+          top-text="I bring you"
+          bottom-text="the death"
+        >
+        </meme-maker>
+      </character-card>
+    </div>
+    <script type="module" src="./src/character-card.js"></script>
 
-  <div id="app">
-    <character-card></character-card>
-  </div>
-  <script type="module" src="./src/character-card.js"></script>
+    <script>
+      // toggle the 1ST instance of the stats
+      document
+        .querySelector("button[data-toggle-btn]")
+        .addEventListener("click", (e) => {
+          const details = document
+            .querySelector("character-card")
+            .shadowRoot.querySelector("details");
+          console.log(details);
+          if (details.getAttribute("open")) {
+            details.removeAttribute("open");
+          } else {
+            details.setAttribute("open", "open");
+          }
+        });
+      // duplicate the 1st item
+      document
+        .querySelector(".duplicate")
+        .addEventListener("click", function (e) {
+          const newCard = document.querySelector("character-card").cloneNode();
+          document.querySelector("#app").appendChild(newCard);
+        });
 
+      // modify name of 1st item
+      document
+        .querySelector(".modifytitle")
+        .addEventListener("click", function (e) {
+          let name = prompt("Name of Character");
+          if (name) {
+            document.querySelector("character-card").characterName = name;
+          }
+        });
 
-  <script>    
-// toggle the 1ST instance of the stats
-document.querySelector('button[data-toggle-btn]').addEventListener('click', (e) => {
-  const bio = document.querySelector('character-card').shadowRoot.querySelector('details')
-  console.log(details);
-  if (bio.getAttribute('open')) {
-    bio.removeAttribute('open');
-  }
-  else {
-    bio.setAttribute('open','open');    
-  }
-});
-// duplicate the 1st item
-document.querySelector('.duplicate').addEventListener('click', function(e) {
-  const newCard = document.querySelector('character-card').cloneNode();
-  document.querySelector('#app').appendChild(itemToClone);
-});
-
-// modify name of 1st item
-document.querySelector('.modifytitle').addEventListener('click', function(e) {
-  let name = prompt("Name of Character");
-  if (name) {
-    document.querySelector('character-card').name = name;
-  }
-});
-
-// delete the last item
-document.querySelector('#deletelastcard').addEventListener('click', function(e) {
-  let wantsTo = confirm("Are you sure?");
-  if (wantsTo) {
-    if (document.querySelector('#app :last-child') !== document.querySelector('character-card')) {
-      document.querySelector('#app :last-child').remove();      
-    }
-    else {
-      alert("Can't delete character");
-    }
-  }
-});
-  </script>
-</body>
-
+      // delete the last item
+      document
+        .querySelector("#deletelastcard")
+        .addEventListener("click", function (e) {
+          let wantsTo = confirm("Are you sure?");
+          if (wantsTo) {
+            if (
+              document.querySelector("#app :last-child") !==
+              document.querySelector("character-card")
+            ) {
+              document.querySelector("#app :last-child").remove();
+            } else {
+              alert("Can't delete character");
+            }
+          }
+        });
+    </script>
+  </body>
 </html>
