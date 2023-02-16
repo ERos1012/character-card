@@ -1,88 +1,106 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css } from "lit";
 
-const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
+const characterImage = new URL("../assets/character.png", import.meta.url).href;
 
-class CharacterCard extends LitElement {
-  static properties = {
-    header: { type: String },
+export class CharacterCard extends LitElement {
+  static get properties() {
+    return {
+      characterName: {
+        type: String,
+        reflect: true,
+      },
+      characterBio: {
+        type: String,
+      },
+    };
   }
 
-  static styles = css`
-    :host {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
-      text-align: center;
-      background-color: var(--character-card-background-color);
-    }
-
-    main {
-      flex-grow: 1;
-    }
-
-    .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
-    }
-
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
+  static get styles() {
+    return css`
+      .wrapper {
+        text-align: center;
+        background-color: orange;
+        max-width: 400px;
+        margin: 16px;
       }
-      to {
-        transform: rotate(360deg);
+
+      .image {
+        height: auto;
+        width: 200px;
+        padding: 8px;
       }
-    }
 
-    .app-footer {
-      font-size: calc(12px + 0.5vmin);
-      align-items: center;
-    }
+      .header {
+        font-size: 60px;
+        margin: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-    .app-footer a {
-      margin-left: 5px;
-    }
-  `;
+      .details {
+        font-size: 20px;
+        margin: 16px 8px 8px;
+        border: 3px solid #555;
+      }
+
+      @media only screen and (max-width: 500px) {
+        .details {
+          display: none;
+        }
+      }
+
+      @media only screen and (min-width: 800px) {
+        .details {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .wrapper {
+          width: 300px;
+          height: auto;
+        }
+        .header {
+          font-size: 35px;
+        }
+        .details {
+          font-size: 16px;
+        }
+      }
+
+      .buttons button:hover {
+        background-color: pink;
+        color: red;
+      }
+
+      .buttons button:focus {
+        background-color: green;
+      }
+    `;
+  }
 
   constructor() {
     super();
-    this.header = 'My app';
+    this.characterName = "Pikachu";
+    this.characterBio =
+      "Pikachu, the Mouse Pokémon. It can generate electric attacks from " +
+      " the electric pouches located in both of its cheeks.";
   }
 
   render() {
     return html`
-      <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
-        <h1>${this.header}</h1>
-
-        <p>Edit <code>src/CharacterCard.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
-      </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+      <div class="wrapper">
+        <div class="container">
+          <div class="header">
+            <h4>${this.characterName}</h4>
+          </div>
+          <img class="image" src="${characterImage}" />
+          <div class="details">
+            <p>${this.characterBio}</p>
+          </div>
+        </div>
+      </div>
     `;
   }
 }
 
-customElements.define('character-card', CharacterCard);
+customElements.define("character-card", CharacterCard);
