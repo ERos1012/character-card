@@ -81,6 +81,21 @@ export class CharacterCard extends LitElement {
       .buttons button:focus {
         background-color: green;
       }
+
+      /* attempt of adding CSS to meme maker (DOES NOT WORK)*/
+      img {
+        width: 20%;
+        height: auto;
+      }
+      .bottom-text {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        padding: 3% 2%;
+        text-align: center;
+        letter-spacing: 2px;
+        color: red;
+      }
     `;
   }
 
@@ -102,10 +117,16 @@ export class CharacterCard extends LitElement {
           <img class="image" src="${characterImage}" />
           <details class="details">
             <slot></slot>
-            <!-- TODO use slot to make details more abstract -->
             <p>${this.characterBio}</p>
           </details>
         </div>
+        <meme-maker
+          alt="pikachu image"
+          image-url="${characterImage}"
+          top-text="${this.characterName}"
+          bottom-text="${this.characterBio}"
+        >
+        </meme-maker>
       </div>
     `;
   }
