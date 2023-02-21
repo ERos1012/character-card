@@ -10,6 +10,9 @@ export class CharacterCard extends LitElement {
         type: String,
         reflect: true,
       },
+      shiny: {
+        type: Boolean,
+      },
       characterBio: {
         type: String,
       },
@@ -18,6 +21,10 @@ export class CharacterCard extends LitElement {
 
   static get styles() {
     return css`
+      :host([shiny]) .all {
+        background-color: var(--character-card-shiny-background-color, yellow);
+        border: 2px solid var(--character-card-shiny-border-color, black);
+      }
       .wrapper {
         text-align: center;
         background-color: orange;
@@ -102,6 +109,7 @@ export class CharacterCard extends LitElement {
   constructor() {
     super();
     this.characterName = "Pikachu";
+    this.shiny = false;
     this.characterBio =
       "Pikachu, the Mouse Pokémon. It can generate electric attacks from " +
       " the electric pouches located in both of its cheeks.";
@@ -116,17 +124,12 @@ export class CharacterCard extends LitElement {
           </div>
           <img class="image" src="${characterImage}" />
           <details class="details">
-            <slot></slot>
+          <slot name="bio"></slot>
             <p>${this.characterBio}</p>
-          </details>
+            </details>
+            </div>
+          </div>
         </div>
-        <meme-maker
-          alt="pikachu image"
-          image-url="${characterImage}"
-          top-text="${this.characterName}"
-          bottom-text="${this.characterBio}"
-        >
-        </meme-maker>
       </div>
     `;
   }
