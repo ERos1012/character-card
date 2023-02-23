@@ -122,7 +122,7 @@ export class CharacterCard extends LitElement {
           <div class="header">
             <h4>${this.characterName}</h4>
           </div>
-          <img class="image" src="${characterImage}" />
+          <img class="image" src="${characterImage}"/>
           <details class="details">
           <slot name="bio"></slot>
             <p>${this.characterBio}</p>
