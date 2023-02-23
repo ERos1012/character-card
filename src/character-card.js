@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
 const characterImage = new URL("../assets/character.png", import.meta.url).href;
+const memeImage = new URL("../assets/meme.jpg", import.meta.url).href;
 
 export class CharacterCard extends LitElement {
   static get properties() {
@@ -115,6 +116,10 @@ export class CharacterCard extends LitElement {
       " the electric pouches located in both of its cheeks.";
   }
 
+  toggleDetails(){
+    this.shadowRoot.querySelector('.details').toggleAttribute('open');
+  }
+
   render() {
     return html`
       <div class="wrapper">
@@ -124,7 +129,7 @@ export class CharacterCard extends LitElement {
           </div>
           <img class="image" src="${characterImage}"/>
           <details class="details">
-          <slot name="bio"></slot>
+          <slot name="meme"></slot>
             <p>${this.characterBio}</p>
             </details>
             </div>
