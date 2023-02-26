@@ -127,6 +127,7 @@ export class CharacterCard extends LitElement {
           <div class="header">
             <h4>${this.characterName}</h4>
           </div>
+          <my-tag background-color="orange"></my-tag>
           <img class="image" src="${characterImage}"/>
           <details class="details">
             <slot name="bio"></slot>
