@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@lrnwebcomponents/meme-maker": "^4.1.0",
+    "babel-preset-es2015": "^6.24.1",
     "lit": "^2.0.2"
   },
   "devDependencies": {

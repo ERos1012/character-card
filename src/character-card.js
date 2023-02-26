@@ -116,8 +116,8 @@ export class CharacterCard extends LitElement {
       " the electric pouches located in both of its cheeks.";
   }
 
-  toggleDetails(){
-    this.shadowRoot.querySelector('.details').toggleAttribute('open');
+  toggleDetails() {
+    this.shadowRoot.querySelector(".details").toggleAttribute("open");
   }
 
   render() {
@@ -128,18 +128,106 @@ export class CharacterCard extends LitElement {
             <h4>${this.characterName}</h4>
           </div>
           <img class="image" src="${characterImage}"/>
-          <meme-maker slot="meme" alt="suprised pikachu" image-url="${memeImage}"
-           top-text="When you forgot to watch the class YouTube videos"></meme-maker>
           <details class="details">
-          <slot name="bio"></slot>
+            <slot name="bio"></slot>
             <p>${this.characterBio}</p>
-            </details>
-            </div>
-          </div>
+            <meme-maker slot="meme" alt="suprised pikachu" image-url="${memeImage}"
+            top-text="When you forgot to do the weekly assignments"></meme-maker>
+          </details>
         </div>
       </div>
     `;
   }
 }
 
+class MyTag extends HTMLElement {
+  /**
+   * This is a convention, not the standard
+   */
+  static get tag() {
+    return "my-tag";
+  }
+  /**
+   * object life cycle
+   */
+  constructor() {
+    super();
+    this.text = this.text || "Just some blue text";
+    // create a template element for processing shadowRoot
+    this.template = document.createElement("template");
+    // create a shadowRoot
+    this.attachShadow({ mode: "open" });
+    this.render();
+  }
+  // render HTML
+  get html() {
+    return `
+      <style>
+        :host {
+          display: inline-block;
+          color: blue;
+        }
+        span {
+          font-style: italic;
+        }
+      </style>
+      <span>${this.text}</span>
+    `;
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    if (window.ShadyCSS) {
+      window.ShadyCSS.styleElement(this);
+    }
+  }
+  /**
+   * Render / rerender the shadowRoot
+   */
+  render() {
+    this.dispatchEvent(
+      new CustomEvent("mytag-has-rerendered", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          value: this.text,
+        },
+      })
+    );
+    this.shadowRoot.innerHTML = null;
+    this.template.innerHTML = this.html;
+    if (window.ShadyCSS) {
+      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    }
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+  }
+  /**
+   * attributes to notice changes to
+   */
+  static get observedAttributes() {
+    return ["text"];
+  }
+  set text(val) {
+    this.setAttribute("text", val);
+  }
+  get text() {
+    return this.getAttribute("text");
+  }
+  /**
+   * callback when any observed attribute changes
+   */
+  attributeChangedCallback(attr, oldValue, newValue) {
+    if (newValue) {
+      switch (attr) {
+        case "text":
+          this.render();
+          break;
+      }
+    }
+  }
+}
+
+customElements.define(MyTag.tag, MyTag);
 customElements.define("character-card", CharacterCard);
