@@ -187,7 +187,7 @@ class MyTag extends HTMLElement {
    */
   render() {
     this.dispatchEvent(
-      new CustomEvent("mytag-has-rerendered", {
+      new CustomEvent("rerender-mytag-please", {
         bubbles: true,
         composed: true,
         cancelable: true,
