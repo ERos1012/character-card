@@ -90,19 +90,14 @@ export class CharacterCard extends LitElement {
         background-color: green;
       }
 
-      /* attempt of adding CSS to meme maker (DOES NOT WORK)*/
-      img {
-        width: 20%;
-        height: auto;
+      .container {
+        background-color: orange;
+        padding: 16px;
+        border-radius: 8px;
       }
-      .bottom-text {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        padding: 3% 2%;
-        text-align: center;
-        letter-spacing: 2px;
-        color: red;
+
+      .shiny {
+        background-color: yellow !important;
       }
     `;
   }
@@ -118,6 +113,10 @@ export class CharacterCard extends LitElement {
 
   toggleDetails() {
     this.shadowRoot.querySelector(".details").toggleAttribute("open");
+  }
+
+  toggleShiny() {
+    this.shadowRoot.querySelector(".shiny").toggleAttribute("open");
   }
 
   render() {
@@ -169,11 +168,7 @@ class MyTag extends HTMLElement {
           color: blue;
           background-color: ${this.backgroundColor};
         }
-        span {
-          font-style: italic;
-        }
       </style>
-      <span>${this.text}</span>
     `;
   }
   /**
