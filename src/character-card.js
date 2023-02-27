@@ -153,7 +153,7 @@ class MyTag extends HTMLElement {
    */
   constructor() {
     super();
-    this.text = this.text || "Just some blue text";
+    this.backgroundColor = "orange";
     // create a template element for processing shadowRoot
     this.template = document.createElement("template");
     // create a shadowRoot
@@ -167,6 +167,7 @@ class MyTag extends HTMLElement {
         :host {
           display: inline-block;
           color: blue;
+          background-color: ${this.backgroundColor};
         }
         span {
           font-style: italic;
@@ -182,6 +183,14 @@ class MyTag extends HTMLElement {
     if (window.ShadyCSS) {
       window.ShadyCSS.styleElement(this);
     }
+    this.addEventListener("click", () => {
+      if (this.backgroundColor === "orange") {
+        this.backgroundColor = "yellow";
+      } else {
+        this.backgroundColor = "orange";
+      }
+      this.render();
+    });
   }
   /**
    * Render / rerender the shadowRoot
@@ -216,19 +225,8 @@ class MyTag extends HTMLElement {
   get text() {
     return this.getAttribute("text");
   }
-  /**
-   * callback when any observed attribute changes
-   */
-  attributeChangedCallback(attr, oldValue, newValue) {
-    if (newValue) {
-      switch (attr) {
-        case "text":
-          this.render();
-          break;
-      }
-    }
-  }
 }
+
 
 customElements.define(MyTag.tag, MyTag);
 customElements.define("character-card", CharacterCard);
