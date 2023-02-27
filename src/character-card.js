@@ -132,9 +132,9 @@ export class CharacterCard extends LitElement {
           <details class="details">
             <slot name="bio"></slot>
             <p>${this.characterBio}</p>
-            <meme-maker slot="meme" alt="suprised pikachu" image-url="${memeImage}"
-            top-text="When you forgot to do the weekly assignments"></meme-maker>
           </details>
+          <meme-maker slot="meme" alt="suprised pikachu" image-url="${memeImage}"
+            top-text="When you forgot to do the weekly assignments"></meme-maker>
         </div>
       </div>
     `;
