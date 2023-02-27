@@ -115,9 +115,6 @@ export class CharacterCard extends LitElement {
     this.shadowRoot.querySelector(".details").toggleAttribute("open");
   }
 
-  toggleShiny() {
-    this.shadowRoot.querySelector(".shiny").toggleAttribute("open");
-  }
 
   render() {
     return html`
