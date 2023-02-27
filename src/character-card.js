@@ -123,16 +123,20 @@ export class CharacterCard extends LitElement {
     return html`
       <div class="wrapper">
         <div class="container">
-          <div class="header">
-            <h4>${this.characterName}</h4>
-          </div>
-          <img class="image" src="${characterImage}"/>
           <details class="details">
             <slot name="bio"></slot>
             <p>${this.characterBio}</p>
           </details>
-          <meme-maker slot="meme" alt="suprised pikachu" image-url="${memeImage}"
-            top-text="When you forgot to do the weekly assignments"></meme-maker>
+          <div class="header">
+            <h4>${this.characterName}</h4>
+          </div>
+          <img class="image" src="${characterImage}" />
+          <meme-maker
+            slot="meme"
+            alt="suprised pikachu"
+            image-url="${memeImage}"
+            top-text="When you forgot to do the weekly assignments"
+          ></meme-maker>
           <my-tag background-color="orange"></my-tag>
         </div>
       </div>
@@ -221,7 +225,6 @@ class MyTag extends HTMLElement {
     return this.getAttribute("text");
   }
 }
-
 
 customElements.define(MyTag.tag, MyTag);
 customElements.define("character-card", CharacterCard);
