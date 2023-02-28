@@ -92,7 +92,7 @@
       .querySelector(".colorchange")
       .addEventListener("click", function (e) {
         const colors = ["red", "orange", "yellow"];
-        const randomColor = colors[Math.floor(Math.random() = colors.length)];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
         document.querySelector("character-card").accentColor = randomColor;
       });
     </script>
