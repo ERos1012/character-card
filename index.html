@@ -27,7 +27,7 @@
       <button class="modifytitle">Change Name</button>
       <button id="deletelastcard">Delete Card</button>
       <button data-toggle-btn>Show Bio</button>
-      <button class="shinyBtn">Toggle Shiny</button>
+      <button class="colorchange">Change Color</button>
     </div>
 
     <div id="app">
@@ -89,7 +89,7 @@
         });
 
       document
-      .querySelector(".shinyBtn")
+      .querySelector(".colorchange")
       .addEventListener("click", function (e) {
         const colors = ["red", "orange", "yellow"];
         const randomColor = colors[Math.floor(Math.random() = colors.length)];
