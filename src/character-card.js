@@ -13,15 +13,15 @@ export class CharacterCard extends LitElement {
       },
       shiny: {
         type: Boolean,
-        accentColor: {
-          type: String,
-          reflect: true,
-          attribute: 'accent-color'
-        }
       },
       characterBio: {
         type: String,
       },
+      accentColor: {
+        type: String,
+        reflect: true,
+        attribute: 'accent-color'
+      }
     };
   }
 
