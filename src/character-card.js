@@ -27,16 +27,16 @@ export class CharacterCard extends LitElement {
 
   static get styles() {
     return css`
-      :host([accent-color="orange"]) .card {
-        background-color: orange;
+      :host([accent-color="orange"]) .container {
+        background-color: var(--character-card-accent-color, orange);
         color: white;
       }
-      :host([accent-color="yellow"]) .card {
-        background-color: yellow;
+      :host([accent-color="yellow"]) .container {
+        background-color: var(--character-card-accent-color, yellow);
         color: white;
       }
-      :host([accent-color="red"]) .card {
-        background-color: red;
+      :host([accent-color="red"]) .container {
+        background-color: var(--character-card-accent-color, red);
         color: white;
       }
       .wrapper {
