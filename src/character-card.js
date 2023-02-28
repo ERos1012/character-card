@@ -32,7 +32,6 @@ export class CharacterCard extends LitElement {
       :host([accent-color="orange"]) .container {
         background-color: var(--character-card-accent-color, orange);
         color: white;
-        display: inline-block;
       }
       :host([accent-color="yellow"]) .container {
         background-color: var(--character-card-accent-color, yellow);
