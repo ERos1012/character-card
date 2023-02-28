@@ -2,7 +2,6 @@ import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
 const characterImage = new URL("../assets/character.png", import.meta.url).href;
-const memeImage = new URL("../assets/meme.jpg", import.meta.url).href;
 
 export class CharacterCard extends LitElement {
   static get properties() {
@@ -21,6 +20,12 @@ export class CharacterCard extends LitElement {
         type: String,
         reflect: true,
         attribute: 'accent-color'
+      },
+      meme: {
+        type: String
+      },
+      topText: {
+        type: String
       }
     };
   }
@@ -112,12 +117,14 @@ export class CharacterCard extends LitElement {
 
   constructor() {
     super();
+    this.meme = "https://media.wired.com/photos/5f87340d114b38fa1f8339f9/master/w_1600%2Cc_limit/Ideas_Surprised_Pikachu_HD.jpg";
     this.accentColor = null;
     this.characterName = "Pikachu";
     this.shiny = false;
     this.characterBio =
       "Pikachu, the Mouse Pokémon. It can generate electric attacks from " +
       " the electric pouches located in both of its cheeks.";
+    this.topText = "When you forgot to do the weekly assignments";
   }
 
   toggleDetails() {
@@ -138,8 +145,8 @@ export class CharacterCard extends LitElement {
             <meme-maker
               slot="meme"
               alt="suprised pikachu"
-              image-url="${memeImage}"
-              top-text="When you forgot to do the weekly assignments"
+              image-url="${this.meme}"
+              top-text="${this.topText}"
             ></meme-maker>
           </details>
           <my-tag background-color="orange"></my-tag>
