@@ -10,9 +10,6 @@ export class CharacterCard extends LitElement {
         type: String,
         reflect: true,
       },
-      shiny: {
-        type: Boolean,
-      },
       characterBio: {
         type: String,
       },
@@ -35,10 +32,11 @@ export class CharacterCard extends LitElement {
       :host([accent-color="orange"]) .container {
         background-color: var(--character-card-accent-color, orange);
         color: white;
+        display: inline-block;
       }
       :host([accent-color="yellow"]) .container {
         background-color: var(--character-card-accent-color, yellow);
-        color: white;
+        color: black;
       }
       :host([accent-color="red"]) .container {
         background-color: var(--character-card-accent-color, red);

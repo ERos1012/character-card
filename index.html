@@ -89,6 +89,7 @@
           }
         });
 
+      // change color of 1st item
       document
       .querySelector(".colorchange")
       .addEventListener("click", function (e) {
@@ -96,6 +97,8 @@
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         document.querySelector("character-card").accentColor = randomColor;
       });
+
+      
     </script>
   </body>
 </html>
