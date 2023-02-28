@@ -13,6 +13,11 @@ export class CharacterCard extends LitElement {
       },
       shiny: {
         type: Boolean,
+        accentColor: {
+          type: String,
+          reflect: true,
+          attribute: 'accent-color'
+        }
       },
       characterBio: {
         type: String,
@@ -22,13 +27,20 @@ export class CharacterCard extends LitElement {
 
   static get styles() {
     return css`
-      :host([shiny]) .all {
-        background-color: var(--character-card-shiny-background-color, yellow);
-        border: 2px solid var(--character-card-shiny-border-color, black);
+      :host([accent-color="orange"]) .card {
+        background-color: orange;
+        color: white;
+      }
+      :host([accent-color="yellow"]) .card {
+        background-color: yellow;
+        color: white;
+      }
+      :host([accent-color="red"]) .card {
+        background-color: red;
+        color: white;
       }
       .wrapper {
         text-align: center;
-        background-color: orange;
         max-width: 400px;
         margin: 16px;
       }
@@ -95,15 +107,12 @@ export class CharacterCard extends LitElement {
         padding: 16px;
         border-radius: 8px;
       }
-
-      .shiny {
-        background-color: yellow !important;
-      }
     `;
   }
 
   constructor() {
     super();
+    this.accentColor = null;
     this.characterName = "Pikachu";
     this.shiny = false;
     this.characterBio =
@@ -114,7 +123,6 @@ export class CharacterCard extends LitElement {
   toggleDetails() {
     this.shadowRoot.querySelector(".details").toggleAttribute("open");
   }
-
 
   render() {
     return html`
@@ -127,13 +135,13 @@ export class CharacterCard extends LitElement {
           <details class="details">
             <slot name="bio"></slot>
             <p>${this.characterBio}</p>
+            <meme-maker
+              slot="meme"
+              alt="suprised pikachu"
+              image-url="${memeImage}"
+              top-text="When you forgot to do the weekly assignments"
+            ></meme-maker>
           </details>
-          <meme-maker
-            slot="meme"
-            alt="suprised pikachu"
-            image-url="${memeImage}"
-            top-text="When you forgot to do the weekly assignments"
-          ></meme-maker>
           <my-tag background-color="orange"></my-tag>
         </div>
       </div>
