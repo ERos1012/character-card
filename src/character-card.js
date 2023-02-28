@@ -112,7 +112,7 @@ export class CharacterCard extends LitElement {
 
   constructor() {
     super();
-    this.accentColor = null;
+    this.accentColor = orange;
     this.characterName = "Pikachu";
     this.shiny = false;
     this.characterBio =
