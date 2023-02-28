@@ -88,8 +88,8 @@
           }
         });
 
-      document.querySelector(".shinyBtn").addEventListener("click", (e) => {
-        const colors = ["red", "orange", "yellow"]
+      document.querySelector(".shinyBtn").addEventListener("click", function (e) {
+        const colors = ["red", "orange", "yellow"];
         const randomColor = colors[Math.floor(Math.random() = colors.length)];
         document.querySelector("character-card").accentColor = randomColor;
       });
