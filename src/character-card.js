@@ -117,7 +117,6 @@ export class CharacterCard extends LitElement {
     this.meme = "https://media.wired.com/photos/5f87340d114b38fa1f8339f9/master/w_1600%2Cc_limit/Ideas_Surprised_Pikachu_HD.jpg";
     this.accentColor = null;
     this.characterName = "Pikachu";
-    this.shiny = false;
     this.characterBio =
       "Pikachu, the Mouse Pokémon. It can generate electric attacks from " +
       " the electric pouches located in both of its cheeks.";
