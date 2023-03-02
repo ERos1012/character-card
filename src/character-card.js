@@ -49,7 +49,7 @@ export class CharacterCard extends LitElement {
       }
       :host([accent-color="red"]) .container {
         background-color: var(--character-card-accent-color, red);
-        color: white;
+        color: black;
       }
 
       .container {
