@@ -8,7 +8,6 @@
     />
     <meta name="Description" content="Put your description here." />
     <script type="module" src="./src/character-card.js"></script>
-    <script type="module" src="./src/character-card-taskbar.js"></script>
     <script type="module" src="./src/card-meme-maker.js"></script>
     <base href="/" />
 
@@ -20,18 +19,95 @@
         font-family: sans-serif;
         background-color: #ededed;
       }
+      button:hover {
+        background-color: pink;
+        color: red;
+      }
+
+      button:focus {
+        background-color: green;
+      }
     </style>
     <title>character-card</title>
   </head>
 
-
   <body>
-    <div class="character-app">
-      <character-card-taskbar>
-        <character-card>
-          <p>HP: 20/20</p>
-        </character-card>
-      </character-card-taskbar>
+    <div class="buttons">
+      <button class="duplicate">Duplicate card</button>
+      <button class="modifytitle">Change Name</button>
+      <button id="deletelastcard">Delete Card</button>
+      <button class="toggleBtn">Show Bio</button>
+      <button class="colorchange">Change Color</button>
     </div>
+
+    <div id="app">
+      <character-card>
+        <p>HP: 20/20</p>
+      </character-card>
+    </div>
+
+    <script type="module" src="./src/character-card.js"></script>
+
+    <script>
+      // duplicate the 1st item
+      document
+        .querySelector(".duplicate")
+        .addEventListener("click", function (e) {
+          const newCard = document.querySelector("character-card").cloneNode();
+          document.querySelector("#app").appendChild(newCard);
+        });
+
+      // modify name of 1st item
+      document
+        .querySelector(".modifytitle")
+        .addEventListener("click", function (e) {
+          let name = prompt("Name of Character");
+          if (name) {
+            document.querySelector("character-card").characterName = name;
+          }
+        });
+
+      // delete the last item
+      document
+        .querySelector("#deletelastcard")
+        .addEventListener("click", function (e) {
+          if (
+            document.querySelector("#app :last-child") !==
+            document.querySelector("character-card")
+          ) {
+            document.querySelector("#app :last-child").remove();
+          } else {
+            alert("Can't delete character");
+          }
+        });
+
+      // change color of 1st item
+      document
+        .querySelector(".colorchange")
+        .addEventListener("click", function (e) {
+          const colors = ["red", "orange", "yellow"];
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+          document.querySelector("character-card").accentColor = randomColor;
+        });
+
+      //Toggle custom event
+      document.body.addEventListener("opened-changed", (e) => {
+        if (e.target === document.querySelector("character-card")) {
+          console.log(e.detail.value);
+          document.querySelector(".toggleBtn").innerText = e.detail.value
+            ? "Hide Bio"
+            : "Show Bio";
+        }
+      });
+
+      //Toggle description
+      document
+        .querySelector(".toggleBtn")
+        .addEventListener("click", function (e) {
+          document.querySelectorAll("character-card").forEach((item) => {
+            item.opened = !item.opened;
+          });
+        });
+    </script>
   </body>
 </html>

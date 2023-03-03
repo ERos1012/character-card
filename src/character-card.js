@@ -28,6 +28,7 @@ export class CharacterCard extends LitElement {
         type: Boolean,
         reflect: true,
       },
+      
     };
   }
 
@@ -36,7 +37,6 @@ export class CharacterCard extends LitElement {
       :host {
         display: inline-block;
         vertical-align: text-top;
-
       }
 
       :host([accent-color="orange"]) .container {
@@ -57,6 +57,11 @@ export class CharacterCard extends LitElement {
         padding: 16px;
         border-radius: 8px;
         vertical-align: top;
+      }
+
+      .container:hover {
+        background-color: #555;
+        color: white;
       }
 
       .wrapper {
