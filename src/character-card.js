@@ -38,7 +38,6 @@ export class CharacterCard extends LitElement {
       display: inline-block;
       vertical-align: text-top;
     }
-
     :host([accent-color="orange"]) .container {
       background-color: var(--character-card-accent-color, orange);
       color: white;
@@ -51,49 +50,43 @@ export class CharacterCard extends LitElement {
       background-color: var(--character-card-accent-color, red);
       color: black;
     }
-
     .container {
       background-color: orange;
       padding: 16px;
       border-radius: 8px;
       vertical-align: top;
+      height: auto;
+      width: 400px;
     }
-
     .container:hover {
       background-color: blue;
       color: white;
     }
-
     .wrapper {
       text-align: center;
       max-width: 400px;
       margin: 16px;
       vertical-align: top;
     }
-
     .image {
       height: auto;
       width: 200px;
       padding: 8px;
     }
-
     .header {
       font-size: 60px;
       margin: 8px;
       font-family: Arial, Helvetica, sans-serif;
     }
-
     .details {
       font-size: 20px;
       margin: 16px 8px 8px;
       border: 3px solid #555;
     }
-
     .details summary {
       font-size: 20px;
       font-weight: bold;
     }
-
     @media screen and (max-width: 500px) {
       .wrapper {
         width: 300px;
@@ -155,14 +148,12 @@ export class CharacterCard extends LitElement {
             <h4>${this.characterName}</h4>
             <h5>${this.subtitle}</h5>
           </div>
-
           <!-- meme maker -->
           <meme-maker
             image-url="${this.characterImage}"
             top-text="${this.topText}"
             bottom-text="${this.bottomText}"
           ></meme-maker>
-
           <!-- Details -->
           <details
             class="details"
