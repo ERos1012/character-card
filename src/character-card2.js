@@ -41,15 +41,15 @@ export class CharacterCard extends LitElement {
       height: auto;
     }
     :host([accent-color="orange"]) .container {
-      background-color: var(--character-card-accent-color, orange);
+      background-color: var(--character-card2-accent-color, orange);
       color: white;
     }
     :host([accent-color="yellow"]) .container {
-      background-color: var(--character-card-accent-color, yellow);
+      background-color: var(--character-card2-accent-color, yellow);
       color: black;
     }
     :host([accent-color="red"]) .container {
-      background-color: var(--character-card-accent-color, red);
+      background-color: var(--character-card2-accent-color, red);
       color: black;
     }
     .container {
@@ -77,12 +77,11 @@ export class CharacterCard extends LitElement {
     }
     .header {
       font-size: 60px;
-      margin: 8px;
       font-family: Arial, Helvetica, sans-serif;
     }
     .details {
       font-size: 20px;
-      margin: 16px 8px 8px;
+      margin: 16px;
       border: 3px solid #555;
     }
     .details summary {
@@ -101,11 +100,23 @@ export class CharacterCard extends LitElement {
         font-size: 16px;
       }
     }
+
+    h4 {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    h5 {
+      font-size: 20px;  
+      margin: 10px;
+    }
   `;
 
   constructor() {
     super();
     this.characterName = "Pikachu";
+    this.subtitle = "The Mouse Pokémon";
     this.characterBio =
       "Pikachu, the Mouse Pokémon. It can generate electric attacks from " +
       " the electric pouches located in both of its cheeks.";
@@ -172,4 +183,4 @@ export class CharacterCard extends LitElement {
   }
 }
 
-customElements.define("character-card", CharacterCard);
+customElements.define("character-card2", CharacterCard);
