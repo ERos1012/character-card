@@ -1,14 +1,15 @@
 import { LitElement, html, css } from "lit";
 import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
-const characterImage = new URL("../assets/character.png", import.meta.url).href;
-
 export class CharacterCard extends LitElement {
   static get properties() {
     return {
       characterName: {
         type: String,
         reflect: true,
+      },
+      subtitle: {
+        type: String,
       },
       characterBio: {
         type: String,
@@ -18,10 +19,13 @@ export class CharacterCard extends LitElement {
         reflect: true,
         attribute: "accent-color",
       },
-      meme: {
+      characterImage: {
         type: String,
       },
       topText: {
+        type: String,
+      },
+      bottomText: {
         type: String,
       },
       opened: {
@@ -60,7 +64,7 @@ export class CharacterCard extends LitElement {
       }
 
       .container:hover {
-        background-color: #555;
+        background-color: blue;
         color: white;
       }
 
@@ -116,7 +120,9 @@ export class CharacterCard extends LitElement {
       "Pikachu, the Mouse Pokémon. It can generate electric attacks from " +
       " the electric pouches located in both of its cheeks.";
     this.topText = "When you forgot to do the weekly assignments";
+    this.bottomText = "So you have to do it in the last minute"
     this.opened = false;
+    this.characterImage="https://media.wired.com/photos/5f87340d114b38fa1f8339f9/master/w_1600%2Cc_limit/Ideas_Surprised_Pikachu_HD.jpg";
   }
 
   toggleEvent() {
@@ -151,10 +157,15 @@ export class CharacterCard extends LitElement {
           <!-- Header -->
           <div class="header">
             <h4>${this.characterName}</h4>
+            <h5>${this.subtitle}</h5>
           </div>
 
-          <!-- Image -->
-          <img class="image" src="${characterImage}" />
+          <!-- meme maker -->
+          <meme-maker
+          image-url="${this.characterImage}"
+          top-text="${this.topText}"
+          bottom-text="${this.bottomText}"
+        ></meme-maker>
 
           <!-- Details -->
           <details
@@ -166,9 +177,6 @@ export class CharacterCard extends LitElement {
             <p>${this.characterBio}</p>
             <slot></slot>
           </details>
-
-          <!-- meme maker -->
-          <card-meme-maker></card-meme-maker>
         </div>
       </div>
     `;
