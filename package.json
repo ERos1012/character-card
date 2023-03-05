@@ -3,7 +3,7 @@
   "description": "Webcomponent character-card following open-wc recommendations",
   "license": "MIT",
   "author": "character-card",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "type": "module",
   "scripts": {
     "test": "web-test-runner --coverage",

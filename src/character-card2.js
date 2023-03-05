@@ -3,14 +3,14 @@ import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
 export class CharacterCard extends LitElement {
   static properties = {
-    characterName: {
+    title: {
       type: String,
       reflect: true,
     },
     subtitle: {
       type: String,
     },
-    characterBio: {
+    bio: {
       type: String,
     },
     accentColor: {
@@ -115,9 +115,9 @@ export class CharacterCard extends LitElement {
 
   constructor() {
     super();
-    this.characterName = "Pikachu";
+    this.title = "Pikachu";
     this.subtitle = "The Mouse Pokémon";
-    this.characterBio =
+    this.bio =
       "Pikachu, the Mouse Pokémon. It can generate electric attacks from " +
       " the electric pouches located in both of its cheeks.";
     this.topText = "When you forgot to do the weekly assignments";
@@ -158,7 +158,7 @@ export class CharacterCard extends LitElement {
         <div class="container">
           <!-- Header -->
           <div class="header">
-            <h4>${this.characterName}</h4>
+            <h4>${this.title}</h4>
             <h5>${this.subtitle}</h5>
           </div>
           <!-- meme maker -->
@@ -174,7 +174,7 @@ export class CharacterCard extends LitElement {
             @toggle="${this.toggleEvent}"
           >
             <summary>Click to see more</summary>
-            <p>${this.characterBio}</p>
+            <p>${this.bio}</p>
             <slot></slot>
           </details>
         </div>
