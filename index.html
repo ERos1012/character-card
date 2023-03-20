@@ -30,6 +30,9 @@
   </head>
 
   <body>
+
+    <character-roster></character-roster>
+
     <div class="buttons">
       <button class="duplicate">Duplicate card</button>
       <button class="modifytitle">Change Name</button>
@@ -44,7 +47,10 @@
       </character-card2>
     </div>
 
-    <script type="module" src="./src/character-card2.js"></script>
+    <script type="module">
+      import "./src/character-card2.js";
+      import "./src/character-roster.js";
+    </script>
 
     <script>
       // duplicate the 1st item
