@@ -37,7 +37,7 @@ export class CharacterRoster extends LitElement {
   }
 
   updateRoster() {
-    const address = new URL("../api/roster", import.meta.url).href;
+    const address = new URL("../api/roster.js", import.meta.url).href;
     fetch(address).then((response) => {
       if (response.ok) {
         return response.json();
