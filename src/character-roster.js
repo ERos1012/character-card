@@ -47,7 +47,6 @@ export class CharacterRoster extends LitElement {
     .then((data) => {
         this.characters = data;
     });
-    console.log(data);
   }
 
   render() {
